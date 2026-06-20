@@ -1,0 +1,411 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تحدي الإعلانات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .score-box {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .ads-flex {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .ad-card {
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+
+    .ad-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 28px rgba(40, 92, 174, 0.2);
+      border-color: #7eaef7;
+    }
+
+    .ad-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .ad-desc {
+      padding: 12px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    .flash-msg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 5rem;
+      color: #1A237E;
+      font-weight: 900;
+      z-index: 10000;
+      text-shadow: 2px 2px 10px rgba(0,0,0,.12);
+      pointer-events: none;
+      animation: bounceIn .8s cubic-bezier(.17,.89,.32,1.49);
+    }
+
+    @keyframes bounceIn {
+      0% { transform: translate(-50%, -50%) scale(0); }
+      60% { transform: translate(-50%, -50%) scale(1.2); }
+      100% { transform: translate(-50%, -50%) scale(1); }
+    }
+  </style>
+  
+
+
+
+</head>
+<body>
+  <nav class="nav"><div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+      <li><a data-page="index.html" href="index.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="about.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+      <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+      <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+      <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+       <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+       <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+    </ul>
+  </div></nav>
+
+  <main class="container">
+    <section class="hero">
+      <h1>تحدي اختيار الإعلان الهجومي</h1>
+      <p class="lead">في كل مرحلة اختار الإعلان الهجومي الصحيح. كل اختيار صحيح يزود نقاطك وينقلك للمرحلة التالية.</p>
+    </section>
+
+    <section style="margin-top:22px" class="grid grid-2">
+      <article class="card">
+        <h3>النقاط الحالية</h3>
+        <div class="score-box">النقاط: <span id="points">0</span></div>
+        <p class="lead">اضغط على الإعلان الهجومي الجذاب.</p>
+        <!-- الزرار الأخضر بعد التعديل -->
+<a class="btn" href="javascript:void(0)" onclick="collectAllAndFinish(100)" style="background-color: #2d6a4f; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+    ابدأ تحليل اعلانك
+</a>
+      </article>
+
+
+<script>
+function endGame(score) {
+    // 1. حفظ النقاط في ذاكرة المتصفح
+    sessionStorage.setItem('game1_score', score);
+    
+    // 2. إظهار رسالة تأكيد (اختياري)
+    alert("ممتاز! تم تسجيل " + score + " نقطة. جاري نقلك للتحدي التالي...");
+    
+    // 3. الانتقال الفعلي للصفحة التانية
+    // تأكدي أن اسم الملف التاني مكتوب صح هنا
+    window.location.href = "ad-analyzer.html"; 
+    
+}
+</script>
+      <article class="card">
+        <h3>بطاقات الإعلانات</h3>
+        <div class="ads-flex" id="cardsContainer"></div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer"></footer>
+  <script src="script/script.js"></script>
+  <script>
+    let currentScore = 0;
+    let currentLevel = 0;
+    const maxScore = 100;
+
+    const levelsData = [
+      {
+        options: [
+          {
+            type: 'normal',
+            img: 'img/p.jpg.jpeg',
+            desc: 'يركز على المنتج ومميزاته بشكل مباشر بدون مقارنة بالمنافسين، ويعتمد على تجربة المستخدم.'
+          },
+          {
+            type: 'aggressive',
+            img: 'img/g.jpg.jpeg',
+            desc: 'مقارنة مباشرة بين Samsung و iPhone مع إبراز نقاط القوة لصالح المنتج المُعلن عنه.'
+          }
+        ]
+      },
+      {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/m.JPG.jpeg',
+            desc: 'إعلان بيبسي الشهير في الهالوين الذي يلمح للمنافس بشكل هجومي ساخر.'
+          },
+          {
+            type: 'normal',
+            img: 'img/k.JPG.jpeg',
+            desc: 'إعلان إبداعي لهاينز يبرز طبيعية المنتج بطريقة بصرية بدون مهاجمة منافسين.'
+          }
+        ]
+      },
+      {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/o.JPG.jpeg',
+            desc: 'مقارنة مباشرة بين منتجين (رين وتايد) ودفع المستهلك للاختيار بينهما.'
+          },
+          {
+            type: 'normal',
+            img: 'img/br.JPG.jpeg',
+            desc: 'إعلان عاطفي يركز على الإحساس بالطعم وتجربة الأكل بدون هجوم على منافسين.'
+          }
+        ]
+      },
+      {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/mak.JPG',
+            desc:'يظهر الشخصية الرمزية لماكدونالدز "رونالد ماكدونالد" وهو يتخفى تحت معطف طويل ليشتري وجبة من برجر كينج سراًحتى المنافس نفسه يفضل طعم برجر كينج ويبحث عنه'
+            },
+          {
+            type: 'normal',
+            img: 'img/ke.JPG',
+            desc:'دمج "علبة الكانز" مع "ثمرة الكيوي" في شكل واحد مقطع، ليوحي لك أن العلبة ليست مجرد مشروب غازي، بل هي فاكهة حقيقية ومضغوطة داخل العبوة.'
+          }
+        ]
+      },
+      {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/iu.JPG',
+            desc:'استخدام حلقات مفاتيح لأربع سيارات منافسة (ألفا روميو، بي إم دبليو، فولفو، مرسيدس) وترتيبها بجانب بعضها لتشكل شعار أودي (الدوائر الأربع).'
+            },
+          {
+            type: 'normal',
+            img: 'img/rd.JPG',
+            desc:'الإعلان يربط ذهنياً بين المشروب وبين "الطاقة الكهربائية"، ليخبرك أن جسمك مثل الجهاز الذي يحتاج لإعادة شحن، وريد بول هو الشاحن الخاص بك'
+          }
+        ]
+      },
+    
+       {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/jel.JPG',
+            desc:'يُظهر الإعلان أربع قطع من حلوى الجيلي (Gummy Bears) بمظهر "عصابة" أو "أشرار" يحملون أسلحة (مضرب، سلاسل، ولاعة)، ويحيطون بقطعة علكة منتوس بيضاء تبدو بريئة.'
+            },
+          {
+            type: 'normal',
+            img: 'img/hot.JPG',
+            desc:'لإعلان يقول لك أن الشطة حارة جداً (نار) لدرجة أنها تحتاج لطفاية، لكن الطفاية هي "الشطة نفسها"!'
+          }
+        ]
+      },
+       {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/bm.JPG',
+            desc:'بدأت أودي بوضع لوحة تتحدى فيها بي إم دبليو قائلة: "دورك يا بي إم دبليو"، فردت الأخيرة بلوحة بجانبها مباشرة عليها سيارتها الفارهة مع كلمة واحدة: "Checkmate" (كش ملك)'
+            },
+          {
+            type: 'normal',
+            img: 'img/ww.JPG',
+            desc:'استخدموا ورقة مجعدة فوق صورة السيارة لتوحي بأنها "مصدومة"، ورسالتهم هي: مثلما يمكنك فرد الورقة لتعود كما كانت، نحن نعيد سيارتك لحالتها الأصلية بسهولة في مراكز صيانتنا'
+          }
+        ]
+      },
+      {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/gog.JPG',
+            desc: 'استغلت جوجل هذا الفشل بنشر إعلانات بسيطة تقول: "نحن نعرف الطريق" مع صورة دقيقة لخرائط جوجل، مما جعل تطبيق آبل يبدو كأنه "لعبة أطفال" غير موثوقة'
+            },
+          {
+            type: 'normal',
+            img: 'img/nev.JPG',
+            desc:'يوحي شكل الكريم داخل العلبة بـ "الهلال"، ليوصل رسالة بصرية ذكية بأن المنتج مخصص للاستخدام الليلي فقط'
+          }
+        ]
+      },
+      {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/dhl.JPG',
+            desc: 'أثناء التوصيل، ترتفع حرارة الطرود فيظهر شعار "DHL أسرع"، ليتحول موظفو المنافسين إلى لوحات إعلانية متنقلة لشركة DHL رغماً عنهم'
+            },
+          {
+            type: 'normal',
+            img: 'img/cof.JPG',
+            desc:'يُشبه الإعلان كوب القهوة بـ "المنبه"؛ ليوضح أن نسكافيه هي الأداة التي توقظك وتعلن بداية وقت النشاط'
+          }
+        ]
+      },
+      {
+        options: [
+          {
+            type: 'aggressive',
+            img: 'img/dd.JPG',
+            desc: 'طلقت دنكن حملة بعنوان  الأصدقاء لا يتركون أصدقاءهم يشربون ستاربكس وركزت في إعلاناتها على أن قهوتها بسيطة سريعة وللأشخاص العمليين بعيداً عن أسماء الأحجام المعقدة في ستاربكس'
+            },
+          {
+            type: 'normal',
+            img: 'img/ade.JPG',
+            desc:'الإعلان يُشبّه حذاء Nike Air Max بـ "الرئة"؛ ليوصل رسالة أن تقنية "الهواء" في الحذاء هي نَفَس الحياة الذي يمنحك الطاقة والقدرة على الاستمرار.'
+          }
+        ]
+      },
+    ];
+
+    function loadLevel() {
+      const container = document.getElementById('cardsContainer');
+      container.innerHTML = '';
+      const level = levelsData[currentLevel % levelsData.length];
+      const shuffled = [...level.options].sort(() => Math.random() - 0.5);
+
+      shuffled.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'ad-card';
+        card.innerHTML = `<img src="${item.img}" alt="Ad"><div class="ad-desc">${item.desc}</div>`;
+        card.onclick = () => handleChoice(item.type);
+        container.appendChild(card);
+      });
+    }
+
+    function showCongrats() {
+      const colors = ['#FFC107', '#E91E63', '#9C27B0', '#03A9F4', '#4CAF50', '#FF5722'];
+
+      for (let i = 0; i < 120; i++) {
+        const confetti = document.createElement('div');
+        confetti.style.cssText = `
+          position: fixed; top: 50%; left: 50%;
+          width: ${Math.random() * 12 + 8}px;
+          height: ${Math.random() * 6 + 4}px;
+          background-color: ${colors[Math.floor(Math.random() * colors.length)]};
+          z-index: 9999; pointer-events: none;
+          transition: transform 2.8s cubic-bezier(0.1, 0.5, 0.2, 1), opacity 3.2s;
+        `;
+        document.body.appendChild(confetti);
+
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 150;
+        const destinationX = Math.cos(angle) * velocity + 'vw';
+        const destinationY = Math.sin(angle) * velocity + 'vh';
+        const rotation = Math.random() * 1000 + 'deg';
+
+        setTimeout(() => {
+          confetti.style.transform = `translate(${destinationX}, ${destinationY}) rotate(${rotation})`;
+          confetti.style.opacity = '0';
+        }, 40);
+
+        setTimeout(() => confetti.remove(), 3600);
+      }
+
+      const msg = document.createElement('div');
+      msg.className = 'flash-msg';
+      msg.innerText = 'أحسنتِ';
+      document.body.appendChild(msg);
+
+      setTimeout(() => msg.remove(), 1800);
+    }
+
+    function handleChoice(type) {
+      if (type === 'aggressive') {
+        currentScore += 10;
+        if (currentScore > maxScore) currentScore = maxScore;
+        document.getElementById('points').innerText = currentScore;
+        showCongrats();
+
+        if (currentScore >= maxScore) {
+          setTimeout(() => {
+            const container = document.getElementById('cardsContainer');
+            container.innerHTML = '<div class="card" style="grid-column:1/-1;text-align:center;"><h3>ممتاز!</h3><p class="lead">وصلتِ إلى 100 نقطة وأنهيتِ التحدي بنجاح.</p></div>';
+          }, 1900);
+          return;
+        }
+
+        setTimeout(() => {
+          currentLevel++;
+          loadLevel();
+        }, 1900);
+      } else {
+        alert('اختيار غير صحيح، حاولي مرة ثانية.');
+      }
+    }
+
+    loadLevel();
+  </script>
+  <h3 id="prev-score">0</h3>
+  <script>
+    // 1. بمجرد فتح الصفحة، نجلب نقاط اللعبة الأولى ونعرضها
+   window.onload = function() {
+    let score1 = sessionStorage.getItem('game1_score') || 0; 
+    let scoreDisplay = document.getElementById('prev-score');
+    if (scoreDisplay) {
+        scoreDisplay.innerText = score1;
+    }
+};
+
+
+    // 2. دالة إنهاء اللعبة الثانية وحفظ المجموع
+    function collectAllAndFinish(score2) {
+        // حفظ نقاط اللعبة الثانية منفصلة
+        sessionStorage.setItem('game2_score', score2);
+        
+        // حساب المجموع الكلي للتأكد
+        let score1 = parseInt(sessionStorage.getItem('game1_score')) || 0;
+        let total = score1 + parseInt(score2);
+        alert("عاش! مجموع نقاطك الكلي الآن: " + total);
+
+        // 3. الانتقال للصفحة المقفولة (الكريديت)
+        window.location.href = "ad-analyzer.html"; 
+       }
+</script>
+<script>
+function collectAllAndFinish(score2) {
+    let score1 = parseInt(sessionStorage.getItem('score1')) || 0;
+    let total = score1 + score2;
+    
+    sessionStorage.setItem('totalScore', total); // بيسجل المجموع
+    sessionStorage.setItem('allowAccess', 'true'); // بيفتح القفل
+
+    alert("عاش! مجموع نقاطك: " + total);
+    window.location.href = "ad-analyzer.html"; // بيرجع للرئيسية
+}
+</script>
+<footer style="text-align: center; padding: 30px; color: #045a0e;">
+        &copy; ٢٠٢٦ جميع الحقوق محفوظة لمشروع التخرج -قسم نظم معلومات
+    </footer>
+</body>
+</html>
+
+
+

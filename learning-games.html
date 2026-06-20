@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تعلم والعب</title><link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <script>
+function finishLevel1(score) {
+    sessionStorage.setItem('score1', score); // بيسجل نقط اللعبة الأولى
+    window.location.href = "aggressive-ad-challenge.html"; // بيروح للصفحة التانية
+}
+</script>
+
+<nav class="nav">
+  <div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+      <li><a data-page="index.html" href="about.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="index.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+     <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+     <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+     <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+     <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+     <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main class="container">
+    <section class="hero">
+      <h1>لعبة البازل الذكية</h1>
+      <p class="lead">جاوب صح على الأسئلة علشان تكشف قطع العنوان 3x3 واحدة واحدة.</p>
+    </section>
+
+    <section style="margin-top:22px" class="grid grid-2">
+      <article class="card">
+        <h3>لوحة البازل</h3>
+        <div class="puzzle-board">
+          <div class="piece">تأثير</div>
+          <div class="piece">تكنولوجيا</div>
+          <div class="piece">المعلومات</div>
+          <div class="piece">و </div>
+          <div class="piece">الإعلان</div>
+          <div class="piece">الهجومي</div>
+          <div class="piece">في</div>
+          <div class="piece">العلامة</div>
+          <div class="piece">التجارية</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3 id="q">جاري التحميل...</h3>
+
+        <div id="answers"></div>
+        <p>نسبة التقدم: <span id="prog" class="kpi" style="font-size:1.2rem">0%</span></p>
+        <!-- الزرار الأخضر بعد التعديل -->
+<a class="btn" href="javascript:void(0)" onclick="finishLevel1(100)" style="background-color: #2d6a4f; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+    ابدأ تحدي الإعلانات
+</a>
+
+
+
+
+      </article>
+    </section>
+  </main>
+
+  <button id="chatToggle" class="chat-toggle">💬</button>
+  <div id="chatWidget" class="chat-widget">
+    <div class="chat-head">مساعد أثر</div>
+    <div id="chatBody" class="chat-body">
+      <div class="chat-msg bot">أهلا بك، أنا موجود لأي استفسار.</div>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" class="input" placeholder="اكتب رسالتك...">
+      <button id="chatSend" class="btn" style="margin-top:0">إرسال</button>
+    </div>
+  </div>
+
+  <footer class="footer"></footer>
+  <script src="script/script.js"></script>
+  <footer style="text-align: center; padding: 30px; color: #045a0e;">
+        &copy; ٢٠٢٦ جميع الحقوق محفوظة لمشروع التخرج -قسم نظم معلومات
+    </footer>
+  
+</body>
+</html>
+
+
+
+
+

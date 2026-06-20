@@ -1,0 +1,140 @@
+﻿
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>من نحن</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/2.css">
+  <link rel="stylesheet" href="https://cloudflare.com">
+
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+       <li><a data-page="index.html" href="index.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="about.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+      <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+      <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+      <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+       <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+       <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+    </ul>
+  </div>
+  </nav>
+ 
+
+  <div class="slide active">
+            <img src="img/ImageSectionImage.jpg" alt="Slide 1" width="500" height="300">
+            <div class="slide-content">
+            </div>
+       
+  
+     <section style="margin-top:22px" class="card">
+      <p class="lead" style="margin-bottom:12px;"><strong> من نحن</strong></p>
+      <h3></h3>
+      <p>أثــر... صٌنّـــاع الإعلان المؤثر
+شركة متخصصة في تقديم خدمات إعلانية وتسويقية متكاملة, تأسست شركـة أثـر في عام 2013, وبدأت إنطلاقتها باللوحات الطرقيـة على مستـوى مدينة مصراتـة, وبالعمل والاجتهاد تـم افتتاح فرعها الثاني في العاصمة طرابس سنة 2015, وتوسعت إلى مصر في 2025 لتكـون جسـرًا يربط السوقين ويخدم الشركات الباحثة عن توسع فعّال.
+</p>
+     </section>
+     <!-- رسالة التشجيع (تظهر في الأعلى) -->
+<div id="cheer-pop" style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#ffc107; color:#333; padding:15px 30px; border-radius:50px; z-index:10000; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,0.2); font-family:sans-serif;"></div>
+
+<!-- أيقونة الكنز -->
+<span id="treasure-icon" onclick="collectTreasure()" style="position:absolute; font-size:45px; cursor:pointer; user-select:none; z-index:999;">💎</span>
+
+<script>
+window.onload = function() {
+    let t = document.getElementById('treasure-icon');
+    // توزيع عشوائي في كامل مساحة الصفحة
+    let x = Math.random() * (window.innerWidth - 60);
+    let y = Math.random() * (document.body.scrollHeight - 60);
+    t.style.left = x + "px";
+    t.style.top = y + "px";
+    
+    // تغيير شكل الكنز عشوائياً لكل صفحة ليعطي تنوعاً
+    const icons = ["💎", "💰", "🏆", "🎁", "👑", "⭐"];
+    t.innerText = icons[Math.floor(Math.random() * icons.length)];
+};
+
+function collectTreasure() {
+    let name = localStorage.getItem('heroName') || "أيها البطل";
+    let count = parseInt(localStorage.getItem('foundCount') || "0");
+    let popup = document.getElementById('cheer-pop');
+    
+    count++; // زيادة العداد
+    localStorage.setItem('foundCount', count.toString());
+
+    // الرسائل مرتبة حسب عدد ما وجده المستخدم فعلياً
+    const steps = [
+        `بداية رائعة يا ${name}! هذا أول كنز تجده 💎 استمر!`,
+        `عاش يا ${name}! الكنز الثاني في جعبتك 💰 أنت سريع!`,
+        `أنت مذهل يا ${name}! وجدت الكنز الثالث 🏆 اقتربت!`,
+        `يا لك من قناص يا ${name}! الكنز الرابع 🎁 بقي واحد فقط!`,
+        `مبارك يا ${name}! 👑 وجدت الـ 5 كنوز وأتممت المهمة بنجاح!`
+    ];
+
+    popup.innerHTML = steps[count-1] || `مستمر في الإبداع يا ${name}!`;
+    popup.style.display = 'block';
+    document.getElementById('treasure-icon').style.display = 'none'; // إخفاء الكنز
+    
+    setTimeout(() => { popup.style.display = 'none'; }, 4000); // تختفي الرسالة بعد 4 ثواني
+}
+</script>
+
+     <!-- 1. تأكدي من وجود هذا الرابط في أعلى الصفحة (داخل Head) لتشغيل الأيقونات -->
+
+<!-- 2. كود الفوتر (ضعيه في أسفل الصفحة) -->
+<footer style="background-color: #1a1a1a5f; color: #ffffff; padding: 40px 20px; font-family: sans-serif; direction: rtl; text-align: right;">
+    <div style="max-width: 1100px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 30px;">
+        
+        <!-- قسم التواصل والبريد -->
+        <div style="flex: 1; min-width: 250px;">
+            <h4 style="color: #12a930; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px;">تواصل معنا</h4>
+            <p style="margin-bottom: 10px;"><i class="fas fa-envelope" style="color: #13b018; margin-left: 10px;"></i> <a href="mailto:info@athar-co.com" style="color: #fff; text-decoration: none;">info@athar-co.com</a></p>
+            <div style="display: flex; gap: 15px; margin-top: 20px;">
+                <a href="#" style="color: #fff; font-size: 18px;"><i class="fab fa-facebook"></i></a>
+                <a href="https://wa.me" style="color: #fff; font-size: 18px;"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" style="color: #fff; font-size: 18px;"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+
+        <!-- فروع ليبيا -->
+        <div style="flex: 1; min-width: 250px;">
+            <h4 style="color: #12a930; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px;">ليبيا</h4>
+            <p style="margin-bottom: 5px;"><strong>طرابلس:</strong> حي الأندلس</p>
+            <p style="margin-bottom: 15px;"><i class="fas fa-phone" style="color: #13b018; margin-left: 10px;"></i> <a href="tel:+218911416000" style="color: #fff; text-decoration: none;">+218 911416000</a></p>
+            
+            <p style="margin-bottom: 5px;"><strong>مصراته:</strong> شارع سعدون</p>
+            <p><i class="fas fa-phone" style="color: #d4af37; margin-left: 10px;"></i> <a href="tel:+218911806000" style="color: #fff; text-decoration: none;">+218 91 180 6000</a></p>
+        </div>
+
+        <!-- فرع مصر -->
+        <div style="flex: 1; min-width: 250px;">
+            <h4 style="color: #12a930; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px;">مصر</h4>
+            <p style="margin-bottom: 5px;"><strong>المهندسين:</strong> شارع كمال إبراهيم خليل</p>
+            <p><i class="fas fa-phone" style="color: #13b018; margin-left: 10px;"></i> <a href="tel:01554933473" style="color: #fff; text-decoration: none;">01554933473</a></p>
+        </div>
+
+    </div>
+</footer>
+
+       <footer style="text-align: center; padding: 30px; color: #045a0e;">
+        &copy; ٢٠٢٦ جميع الحقوق محفوظة لمشروع التخرج -قسم نظم معلومات
+    </footer>
+</body>
+
+<script src="script/script.js"></script>
+
+    </section>
+</html>

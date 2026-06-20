@@ -1,0 +1,194 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الخدمات</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .simple-chat {
+      max-width: 560px;
+      margin: 26px auto 60px;
+      border: 1px solid #02672a;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 10px 24px rgba(3, 119, 34, 0.12);
+      overflow: hidden;
+    }
+    .simple-head {
+      background: linear-gradient(120deg, #01753d, #027943);
+      color: #fff;
+      padding: 14px 16px;
+      font-weight: 700;
+    }
+    .simple-body {
+      padding: 14px;
+      max-height: 480px;
+      overflow-y: auto;
+      background: #f7fbff;
+    }
+    .msg {
+      padding: 10px 12px;
+      border-radius: 12px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      line-height: 1.6;
+      max-width: 90%;
+    }
+    .msg.user {
+      background: #026b2c;
+      color: #fff;
+      margin-right: auto;
+    }
+    .msg.bot {
+      background: #e9f2ff;
+      color: #036e35;
+      margin-left: auto;
+    }
+    .options {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      padding: 0 14px 14px;
+      background: #f7fbff;
+    }
+    .opt-btn {
+      border: 1px solid #048b41;
+      background: #fff;
+      color: #017a3d;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+ <nav class="nav">
+  <div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+       <li><a data-page="index.html" href="index.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="about.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+      <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+      <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+      <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+       <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+       <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <main class="container" style="padding-top:14px;">
+    <section class="simple-chat">
+      <div class="simple-head">مساعد  - الخدمات</div>
+      <div id="serviceChatBody" class="simple-body">
+        <div class="msg bot">مرحباً بك، اختر سؤالاً من الخيارات السريعة وسأرد فوراً.</div>
+      </div>
+      <div class="options">
+        <button class="opt-btn" data-q="services">خدماتنا</button>
+        <button class="opt-btn" data-q="pricing">الأسعار</button>
+        <button class="opt-btn" data-q="aggressive">الإعلان الهجومي</button>
+        <button class="opt-btn" data-q="location">المقر</button>
+        <button class="opt-btn" data-q="payment">الدفع</button>
+        <button class="opt-btn" data-q="duration">مدة التنفيذ</button>
+        <button class="opt-btn" data-q="contact">التواصل</button>
+      </div>
+    </section>
+  </main>
+<!-- رسالة التشجيع (تظهر في الأعلى) -->
+<div id="cheer-pop" style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#ffc107; color:#333; padding:15px 30px; border-radius:50px; z-index:10000; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,0.2); font-family:sans-serif;"></div>
+
+<!-- أيقونة الكنز -->
+<span id="treasure-icon" onclick="collectTreasure()" style="position:absolute; font-size:45px; cursor:pointer; user-select:none; z-index:999;">💎</span>
+
+<script>
+window.onload = function() {
+    let t = document.getElementById('treasure-icon');
+    // توزيع عشوائي في كامل مساحة الصفحة
+    let x = Math.random() * (window.innerWidth - 60);
+    let y = Math.random() * (document.body.scrollHeight - 60);
+    t.style.left = x + "px";
+    t.style.top = y + "px";
+    
+    // تغيير شكل الكنز عشوائياً لكل صفحة ليعطي تنوعاً
+    const icons = ["💎", "💰", "🏆", "🎁", "👑", "⭐"];
+    t.innerText = icons[Math.floor(Math.random() * icons.length)];
+};
+
+function collectTreasure() {
+    let name = localStorage.getItem('heroName') || "أيها البطل";
+    let count = parseInt(localStorage.getItem('foundCount') || "0");
+    let popup = document.getElementById('cheer-pop');
+    
+    count++; // زيادة العداد
+    localStorage.setItem('foundCount', count.toString());
+
+    // الرسائل مرتبة حسب عدد ما وجده المستخدم فعلياً
+    const steps = [
+        `بداية رائعة يا ${name}! هذا أول كنز تجده 💎 استمر!`,
+        `عاش يا ${name}! الكنز الثاني في جعبتك 💰 أنت سريع!`,
+        `أنت مذهل يا ${name}! وجدت الكنز الثالث 🏆 اقتربت!`,
+        `يا لك من قناص يا ${name}! الكنز الرابع 🎁 بقي واحد فقط!`,
+        `مبارك يا ${name}! 👑 وجدت الـ 5 كنوز وأتممت المهمة بنجاح!`
+    ];
+
+    popup.innerHTML = steps[count-1] || `مستمر في الإبداع يا ${name}!`;
+    popup.style.display = 'block';
+    document.getElementById('treasure-icon').style.display = 'none'; // إخفاء الكنز
+    
+    setTimeout(() => { popup.style.display = 'none'; }, 4000); // تختفي الرسالة بعد 4 ثواني
+}
+</script>
+
+  <footer class="footer"></footer>
+  <script src="script/script.js"></script>
+  <script>
+    (function () {
+      const body = document.getElementById('serviceChatBody');
+      const buttons = document.querySelectorAll('.opt-btn');
+      if (!body || !buttons.length) return;
+
+      const replies = {
+        services: 'في أثر نقدم: إدارة السوشيال ميديا، الإعلان الهجومي، الهوية البصرية، وإنتاج الفيديو والموشن جرافيك.',
+        pricing: 'لدينا باقات اقتصادية واحترافية وVIP، والأسعار حسب حجم المتطلبات. السعر الحالي: ٢٠٠٠',
+        aggressive: 'الإعلان الهجومي هو أسلوب يبرز مميزاتك أمام المنافسين بشكل مباشر وذكي.',
+        location: 'مقر الشركة:المهندسين:شارع كمال إبراهيم خليل ، ويمكن عقد اجتماع أونلاين عبر Zoom.',
+        payment: 'طرق الدفع: تحويل بنكي، فودافون كاش، نقدي في المقر، فيزا/ماستر كارد.',
+        duration: 'الهوية البصرية: 7-10 أيام، إعداد الحملات الإعلانية: 3-5 أيام عمل.',
+        contact: 'للتواصل المباشر: 01554933473'
+      };
+
+      function add(text, type) {
+        const d = document.createElement('div');
+        d.className = 'msg ' + type;
+        d.textContent = text;
+        body.appendChild(d);
+        body.scrollTop = body.scrollHeight;
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-q');
+          add(btn.textContent, 'user');
+          setTimeout(() => add(replies[key] || 'xxxxxxx', 'bot'), 250);
+        });
+      });
+    })();
+  </script>
+  <footer style="text-align: center; padding: 30px; color: #045a0e;">
+        &copy; ٢٠٢٦ جميع الحقوق محفوظة لمشروع التخرج -قسم نظم معلومات
+    </footer>
+</body>
+</html>
+
+
+
+

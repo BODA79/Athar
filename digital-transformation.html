@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التحول الرقمي</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+       <li><a data-page="index.html" href="index.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="about.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+      <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+      <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+      <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+       <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+       <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+    </ul>
+  </div>
+</nav>
+  <main class="container">
+    <section class="hero">
+      <h1>تحليل واقعي للتحول الرقمي</h1>
+      <p class="lead">كيف غيرت تكنولوجيا المعلومات موازين القوى في الإعلانات وبناء العلامة التجارية.</p>
+    </section>
+
+    <section style="margin-top:22px" class="grid grid-2">
+      <article class="card">
+        <h3>🚀 الإعلان المدعوم تقنيا</h3>
+        <p>• تحليل دقيق لسلوك المستهلك.</p>
+        <p>• إعلانات هجومية ذكية ومستهدفة.</p>
+        <p>• ردود فعل فورية تعزز العلامة.</p>
+      </article>
+      <article class="card">
+        <h3>📉 الإعلان التقليدي</h3>
+        <p>• استهداف عشوائي للجمهور.</p>
+        <p>• صعوبة في تتبع نتائج الحملات.</p>
+        <p>• تأخر في الرد على المنافسين.</p>
+      </article>
+    </section>
+
+    <section style="margin-top:28px; background:#05621a; border-radius:22px; padding:36px 18px; color:#fff;" class="grid grid-3">
+      <article style="text-align:center;">
+        <div class="kpi" style="color:#ffd23f;">85%</div>
+        <p style="color:#fff;">دقة الاستهداف</p>
+      </article>
+      <article style="text-align:center;">
+        <div class="kpi" style="color:#ffd23f;">2x</div>
+        <p style="color:#fff;">سرعة الاستجابة</p>
+      </article>
+      <article style="text-align:center;">
+        <div class="kpi" style="color:#ffd23f;">60%</div>
+        <p style="color:#fff;">نمو الولاء للعلامة</p>
+      </article>
+    </section>
+
+    <section style="margin-top:36px;">
+      <h2 style="text-align:center;">خريطة طريق النجاح الرقمي</h2>
+      <div class="grid grid-3" style="margin-top:18px;">
+        <article class="card" style="text-align:center;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#ff4d4d;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;">1</div>
+          <h3 style="margin-top:14px;">جمع البيانات</h3>
+          <p>رصد السوق والمنافسين رقميا.</p>
+        </article>
+        <article class="card" style="text-align:center;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#ff4d4d;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;">2</div>
+          <h3 style="margin-top:14px;">الهجوم الذكي</h3>
+          <p>إطلاق حملات تفاعلية فورية.</p>
+        </article>
+        <article class="card" style="text-align:center;">
+          <div style="width:38px;height:38px;border-radius:50%;background:#ff4d4d;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;">3</div>
+          <h3 style="margin-top:14px;">الاستدامة</h3>
+          <p>تحويل الانتباه إلى ولاء دائم.</p>
+        </article>
+      </div>
+    </section>
+<!-- رسالة التشجيع (تظهر في الأعلى) -->
+<div id="cheer-pop" style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#ffc107; color:#333; padding:15px 30px; border-radius:50px; z-index:10000; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,0.2); font-family:sans-serif;"></div>
+
+<!-- أيقونة الكنز -->
+<span id="treasure-icon" onclick="collectTreasure()" style="position:absolute; font-size:45px; cursor:pointer; user-select:none; z-index:999;">💎</span>
+
+<script>
+window.onload = function() {
+    let t = document.getElementById('treasure-icon');
+    // توزيع عشوائي في كامل مساحة الصفحة
+    let x = Math.random() * (window.innerWidth - 60);
+    let y = Math.random() * (document.body.scrollHeight - 60);
+    t.style.left = x + "px";
+    t.style.top = y + "px";
+    
+    // تغيير شكل الكنز عشوائياً لكل صفحة ليعطي تنوعاً
+    const icons = ["💎", "💰", "🏆", "🎁", "👑", "⭐"];
+    t.innerText = icons[Math.floor(Math.random() * icons.length)];
+};
+
+function collectTreasure() {
+    let name = localStorage.getItem('heroName') || "أيها البطل";
+    let count = parseInt(localStorage.getItem('foundCount') || "0");
+    let popup = document.getElementById('cheer-pop');
+    
+    count++; // زيادة العداد
+    localStorage.setItem('foundCount', count.toString());
+
+    // الرسائل مرتبة حسب عدد ما وجده المستخدم فعلياً
+    const steps = [
+        `بداية رائعة يا ${name}! هذا أول كنز تجده 💎 استمر!`,
+        `عاش يا ${name}! الكنز الثاني في جعبتك 💰 أنت سريع!`,
+        `أنت مذهل يا ${name}! وجدت الكنز الثالث 🏆 اقتربت!`,
+        `يا لك من قناص يا ${name}! الكنز الرابع 🎁 بقي واحد فقط!`,
+        `مبارك يا ${name}! 👑 وجدت الـ 5 كنوز وأتممت المهمة بنجاح!`
+    ];
+
+    popup.innerHTML = steps[count-1] || `مستمر في الإبداع يا ${name}!`;
+    popup.style.display = 'block';
+    document.getElementById('treasure-icon').style.display = 'none'; // إخفاء الكنز
+    
+    setTimeout(() => { popup.style.display = 'none'; }, 4000); // تختفي الرسالة بعد 4 ثواني
+}
+</script>
+
+    <section style="margin-top:24px; text-align:center;">
+      <div style="display:inline-block; background:#fff2c9; border-right:5px solid #ffcc00; border-radius:8px; padding:14px 18px;">
+        <strong>خلاصة الدراسة:</strong> تكنولوجيا المعلومات هي السلاح الأقوى في معارك البراندنج الحديثة.
+      </div>
+      <div>
+        <a class="btn" href="index.html" style="margin-top:20px;">العودة للرئيسية</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"></footer>
+  <script src="script/script.js"></script>
+  <footer style="text-align: center; padding: 30px; color: #045a0e;">
+        &copy; ٢٠٢٦ جميع الحقوق محفوظة لمشروع التخرج -قسم نظم معلومات
+    </footer>
+</body>
+</html>
+
+
+
+

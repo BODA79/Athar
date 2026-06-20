@@ -1,0 +1,379 @@
+﻿
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head><meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دراسه الحالات</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+       <li><a data-page="index.html" href="index.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="about.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+      <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+      <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+      <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+       <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+       <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+    </ul>
+  </div>
+  </nav>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دراسات الحالة - وكالة أثر</title>
+    <!-- استدعاء خط احترافي وعصري -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- الأساسيات والتنسيق العام --- */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f9fafb;
+            margin: 0;
+            padding: 40px 20px;
+            color: #1f2937;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page-container {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 50px;
+        }
+
+        /* حاوية قسم دراسة حالة لعميل واحد */
+        .case-study-section {
+            background-color: #FFFFFF;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+            padding: 40px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* الخط الأخضر الزخرفي بالأعلى */
+        .case-study-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #006025 0%, #14e798 100%);
+        }
+
+        .client-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 20px;
+        }
+
+        .client-info h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .client-info p {
+            margin: 5px 0 0;
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        .client-logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #9ca3af;
+            border: 2px dashed #e5e7eb;
+        }
+
+        /* شبكة المربعات الثلاثية */
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-color: #36eba2;
+        }
+
+        .card-icon {
+            font-size: 28px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            margin: 0 0 15px;
+            font-size: 19px;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .card p {
+            margin: 0;
+            line-height: 1.7;
+            font-size: 15px;
+            color: #4b5563;
+        }
+
+        /* تنسيق خاص لمربع النتائج والأرقام */
+        .card.results {
+            background-color: #111827;
+            border-color: #111827;
+            color: #FFFFFF;
+        }
+
+        .card.results:hover {
+            border-color: #006a15;
+        }
+
+        .card.results h3,
+        .card.results p {
+            color: #FFFFFF;
+        }
+
+        .numbers-grid {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-item {
+            border: 1px solid #374151;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: #1f2937;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #36eba2;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: #d1d5db;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .campaign-budget {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #9ca3af;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .client-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .case-study-section {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        
+        <h1 class="page-title">قصص نجاح عملائنا (دراسات الحالة)</h1>
+
+        <!-- ========================================== -->
+        <!-- دراسة الحالة الأولى (مجال المتاجر الإلكترونية) -->
+        <!-- ========================================== -->
+        <section class="case-study-section">
+            <div class="client-header">
+                <div class="client-info">
+                    <h2>شركة glc للدهانات</h2>
+                    <p>المجال: شركة دهانات عالمية | الهدف: مضاعفة المبيعات</p>
+                </div>
+                <div class="client-logo-placeholder">Logo</div>
+            </div>
+
+            <div class="case-study-grid">
+                <article class="card challenge">
+                    <span class="card-icon">🎯</span>
+                    <h3> التحديات في سوق الدهانات المصري
+                    </h3>
+                <p>
+1. "النقّاش" هو صانع القرار الأول: في مصر، مهما كان إعجاب المستهلك بالإعلان، إذا قال النقاش (الفني) "البوية دي بتسيل أو تغطيتها ضعيفة"، سيتراجع العميل فوراً. التحدي هو إرضاء المستهلك النهائي (B2C) والفني (B2B) في نفس الوقت.
+2. المنافسة الشرسة وتمركز العلامات التجارية: هناك منافسون بأوزان ثقيلة. (جوتن) تسيطر على الصورة الذهنية للـ Premium/الألوان، و(سايبس وسكيب) يتنافسون بضراوة في شريحة الاعتمادية والانتشار.
+3. الظروف الاقتصادية (القيمة مقابل السعر): المستهلك حالياً يبحث عن الدهان الذي "يعيش ويستحمل" ولا يحتاج لتجديده قريباً، وفي نفس الوقت بسعر مناسب.
+4. موسمية الشراء: التجهيز للزواج وتجديد الشقق ينشط جداً قبل الأعياد وفي فصل الصيف، مما يجعل هذه الفترات مزدحمة إعلانياً (Clutter).
+
+</p>
+                </article>
+
+                <article class="card strategy">
+                    <span class="card-icon">💡</span>
+                    <h3>الاستراتيجية والحل</h3>
+                    <p>الفكرة الأساسية (The Big Idea): "GLC.. بتلوّن العُمر" أو "أصل الحكاية لون" الاستراتيجية ستنقسم إلى مسارين متوازيين لضمان التغطية الشاملة:
+المسار الأول: المستهلك النهائي (العرسان والمجددين)
+* المحتوى العاطفي (Emotional Appeal): إعلانات فيديو تبرز أن الدهان ليس مجرد لون على الحائط، بل هو خلفية لذكريات الأسرة، ضحك الأطفال، وصور الزفاف.
+* الواقع المعزز (AR) والديجيتال: إطلاق فلتر على تيك توك وإنستجرام أو ميزة على موقع GLC تتيح للمستخدمين تجربة ألوان GLC على حوائطهم باستخدام كاميرا الموبايل قبل الشراء.
+* التثقيف والتسهيل: محتوى مرئي قصير يسهل على المستهلك اختيار الألوان المتناسقة (Color Palettes) ويوضح له الفروق بين أنواع الدهانات ببساطة.
+المسار الثاني: الفنيين والمقاولين (النقاشين)
+* حملة "صنايعي بريمو": التركيز على برنامج الولاء الخاص بـ GLC (تطبيق النقاط والمكافآت).
+* التواصل المباشر: جروبات واتساب ومحتوى موجه خصيصاً للنقاشين يبرز سهولة الفرد، قوة التغطية (الكيلو بيفرد كام متر)، ومقاومة الغسيل.
+* تكريم الفنيين: إبراز قصص نجاح لنقاشين حقيقيين يعتمدون على GLC كجزء من الحملة الديجيتال لزيادة انتمائهم للعلامة التجارية.
+
+</p>
+                </article>
+
+                <article class="card results">
+                    <span class="card-icon">🚀</span>
+                    <h3>النتائج والأرقام Result & Numbers</h3>
+                    <p>خلال 30 يوماً من تنفيذ الاستراتيجية الجديدة، حقق العميل نتائج غير مسبوقة:</p>
+                    
+                    <div class="numbers-grid">
+                        <div class="stat-item">
+                            <span class="stat-value">310% +</span>
+                            <span class="stat-label">زيادة في المبيعات</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">45% -</span>
+                            <span class="stat-label">تكلفة الاستحواذ</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">8.5 x</span>
+                            <span class="stat-label">عائد الإنفاق (ROAS)</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">12k +</span>
+                            <span class="stat-label">عملاء جدد</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- دراسة الحالة الثانية (مجال العيادات والخدمات) -->
+        <!-- ========================================== -->
+        <section class="case-study-section">
+            <div class="client-header">
+                <div class="client-info">
+                    <h2> TOYOTA شركة تويوتا</h2>
+                    <p>المجال: السيارات | الهدف: زيادة ثقة الجمهور</p>
+                </div>
+                <div class="client-logo-placeholder">Logo</div>
+            </div>
+
+            <div class="case-study-grid">
+                <article class="card challenge">
+                    <span class="card-icon">🎯</span>
+                    <h3>التحدي Challenge</h3>
+                    <p>القوة الشرائية والمنافسة السعرية: مع ارتفاع أسعار السيارات، أصبح القرار الشرائي أصعب ويستغرق وقتاً أطول. في نفس الوقت، المنافسة الشرسة من السيارات الصينية التي تقدم "كماليات وتكنولوجيا" عالية بأسعار أقل تمثل إغراءً كبيراً للمشتري.
+
+توافر السيارات (Availability): تحديات الاستيراد وقوائم الانتظار الطويلة تجعل الترويج لسيارة غير موجودة في المعارض أمراً محبطاً للعميل.
+
+الصورة الذهنية لدى الشباب: تويوتا معروفة بالاعتمادية وأنها "سيارة العمر الطويل"، لكن بعض الشباب قد يراها سيارة "كلاسيكية" أو "عملية بزيادة" مقارنة بالتصاميم المستقبلية للمنافسين.</p>
+                </article>
+
+                <article class="card strategy">
+                    <span class="card-icon">💡</span>
+                    <h3>الاستراتيجية والحل Our Approach</h3>
+                    <p>المحور الأول: اللعب على وتر "القيمة وإعادة البيع" (Resale Value & Reliability)
+
+رسالة الحملة: "العربية الوحيدة اللي سعرها فيها". تويوتا ليست مجرد سيارة، هي شيك مقبول الدفع.
+
+المحتوى: سلسلة فيديوهات قصيرة مبنية على فكرة المقارنة (بدون ذكر أسماء) بين سيارة مليئة بالكماليات تتعطل كثيراً وتفقد قيمتها، وبين تويوتا التي تعمل بكفاءة ويسهل صيانة قطع غيارها في أي مكان، وتحتفظ بقيمتها عند البيع.
+
+المحور الثاني: تسليط الضوء على خدمات ما بعد البيع (The After-Sales Hero)
+
+طرق أبواب المالكين الحاليين: حملة ترويجية لخدمات الصيانة وتوافر قطع الغيار الأصلية.
+
+رسالة الطمأنينة: إبراز شبكة مراكز الصيانة الواسعة لتويوتا في كل المحافظات، مما يعطي رسالة للمشتري الجديد أن "ظهرك متأمن".
+
+المحور الثالث: استقطاب الشباب والتكنولوجيا (The Modern Toyota)
+
+المحتوى الديجيتال: إبراز تكنولوجيا الـ Hybrid (الهجينة) التي تتميز بها تويوتا، وتوفيرها لاستهلاك البنزين، بالإضافة إلى استعراض الشاشات ووسائل الأمان الحديثة (Toyota Safety Sense) بلغة بصرية سريعة تناسب إنستجرام وتيك توك.
+
+حجز تجربة القيادة (Test Drive): إطلاق حملة Lead Generation لتسهيل حجز تجارب القيادة أونلاين للموديلات المتوفرة.</p>
+                </article>
+
+                <article class="card results">
+                    <span class="card-icon">🚀</span>
+                    <h3>النتائج والأرقام Result & Numbers</h3>
+                    <p>نجحنا في تحويل الزيارات إلى حجوزات مؤكدة، وتقليل التكلفة المهدرة:</p>
+                    
+                    <div class="numbers-grid">
+                        <div class="stat-item">
+                            <span class="stat-value">150% +</span>
+                            <span class="stat-label">زيادة في الحجوزات</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">35% -</span>
+                            <span class="stat-label">تكلفة العميل المحتمل</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">4.2 x</span>
+                            <span class="stat-label">عائد الإنفاق الإعلاني</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">500 +</span>
+                            <span class="stat-label">مريض جديد</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </div>
+<script src="script/script.js"></script>
+<footer style="text-align: center; padding: 30px; color: #045a0e;">
+        &copy; ٢٠٢٦ جميع الحقوق محفوظة لمشروع التخرج -قسم نظم معلومات
+    </footer>
+</body>
+</html>

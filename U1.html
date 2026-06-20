@@ -1,0 +1,157 @@
+﻿
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جرب اعلانك</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+       <li><a data-page="index.html" href="index.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="about.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+      <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+      <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+      <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+       <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+       <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+    </ul>
+    </div>
+  </nav>
+
+    <meta charset="UTF-8">
+    <title>مشروع الإعلانات الهجومية</title>
+
+</head>
+<body>
+
+<div style="display: flex; gap: 40px; justify-content: center; padding: 50px; flex-wrap: wrap;">
+
+    <!-- 1. يافطة الشارع -->
+    <div style="text-align: center;">
+        <div style="position: relative; width: 400px; height: 220px; background: #222; border: 8px solid #111; border-radius: 5px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5);">
+            <!-- أرجل اليافطة -->
+            <div style="position: absolute; bottom: -100px; left: 50px; width: 8px; height: 100px; background: #333;"></div>
+            <div style="position: absolute; bottom: -100px; right: 50px; width: 8px; height: 100px; background: #333;"></div>
+            
+            <!-- النص اللي هيختفي -->
+            <p id="txt-billboard" style="color: #555; padding-top: 85px; font-weight: bold;">مكان اليافطة</p>
+            
+            <!-- الصورة اللي هتظهر (واخدة تأثير هجومي) -->
+            <img id="streetAd" src="" style="width: 100%; height: 100%; object-fit: cover; display: none; transition: 0.5s ease-out; transform: scale(1.1);">
+        </div>
+        <p style="margin-top: 110px; font-weight: bold; color: #333;">إعلان الميادين</p>
+    </div>
+
+    <!-- 2. الموبايل -->
+    <div style="text-align: center;">
+        <div style="position: relative; width: 190px; height: 380px; background: #000; border: 10px solid #1a1a1a; border-radius: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); overflow: hidden;">
+            <!-- النص اللي هيختفي -->
+            <p id="txt-mobile" style="color: #444; padding-top: 170px; font-size: 14px;">شاشة الموبايل</p>
+            
+            <!-- الصورة اللي هتظهر -->
+            <img id="phoneAd" src="" style="width: 100%; height: 100%; object-fit: cover; display: none; transition: 0.5s ease-out;">
+        </div>
+        <p style="margin-top: 20px; font-weight: bold; color: #333;">إعلان الموبايل</p>
+    </div>
+
+</div>
+
+<!-- زر الرفع (تأكدي إن الـ ID هو imageInput) -->
+<div style="text-align: center; margin-top: 20px;">
+    <input type="file" id="imageInput" accept="image/*">
+</div>
+
+<script>
+    // الجافا سكريبت اللي هتحيي الصفحة
+    document.getElementById('imageInput').onchange = function(e) {
+        const file = e.target.files[0]; // سحب أول ملف تم اختياره
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const sImg = document.getElementById('streetAd');
+                const pImg = document.getElementById('phoneAd');
+
+                // 1. حط الصورة في الأماكن
+                sImg.src = event.target.result;
+                pImg.src = event.target.result;
+
+                // 2. إظهار الصور وإخفاء الكلام
+                sImg.style.display = "block";
+                pImg.style.display = "block";
+                document.getElementById('txt-billboard').style.display = "none";
+                document.getElementById('txt-mobile').style.display = "none";
+
+                // 3. تأثير هجومي (الزوم)
+                setTimeout(() => {
+                    sImg.style.transform = "scale(1)";
+                }, 50);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+</script>
+
+<!-- رسالة التشجيع (تظهر في الأعلى) -->
+<div id="cheer-pop" style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#ffc107; color:#333; padding:15px 30px; border-radius:50px; z-index:10000; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,0.2); font-family:sans-serif;"></div>
+
+<!-- أيقونة الكنز -->
+<span id="treasure-icon" onclick="collectTreasure()" style="position:absolute; font-size:45px; cursor:pointer; user-select:none; z-index:999;">💎</span>
+
+<script>
+window.onload = function() {
+    let t = document.getElementById('treasure-icon');
+    // توزيع عشوائي في كامل مساحة الصفحة
+    let x = Math.random() * (window.innerWidth - 60);
+    let y = Math.random() * (document.body.scrollHeight - 60);
+    t.style.left = x + "px";
+    t.style.top = y + "px";
+    
+    // تغيير شكل الكنز عشوائياً لكل صفحة ليعطي تنوعاً
+    const icons = ["💎", "💰", "🏆", "🎁", "👑", "⭐"];
+    t.innerText = icons[Math.floor(Math.random() * icons.length)];
+};
+
+function collectTreasure() {
+    let name = localStorage.getItem('heroName') || "أيها البطل";
+    let count = parseInt(localStorage.getItem('foundCount') || "0");
+    let popup = document.getElementById('cheer-pop');
+    
+    count++; // زيادة العداد
+    localStorage.setItem('foundCount', count.toString());
+
+    // الرسائل مرتبة حسب عدد ما وجده المستخدم فعلياً
+    const steps = [
+        `بداية رائعة يا ${name}! هذا أول كنز تجده 💎 استمر!`,
+        `عاش يا ${name}! الكنز الثاني في جعبتك 💰 أنت سريع!`,
+        `أنت مذهل يا ${name}! وجدت الكنز الثالث 🏆 اقتربت!`,
+        `يا لك من قناص يا ${name}! الكنز الرابع 🎁 بقي واحد فقط!`,
+        `مبارك يا ${name}! 👑 وجدت الـ 5 كنوز وأتممت المهمة بنجاح!`
+    ];
+
+    popup.innerHTML = steps[count-1] || `مستمر في الإبداع يا ${name}!`;
+    popup.style.display = 'block';
+    document.getElementById('treasure-icon').style.display = 'none'; // إخفاء الكنز
+    
+    setTimeout(() => { popup.style.display = 'none'; }, 4000); // تختفي الرسالة بعد 4 ثواني
+}
+</script>
+
+
+<script src="script/script.js"></script>
+<footer style="text-align: center; padding: 30px; color: #045a0e;">
+        &copy; ٢٠٢٦ جميع الحقوق محفوظة لمشروع التخرج -قسم نظم معلومات
+    </footer>
+</body>
+</html>

@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المحرر</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .panel {
+      background: linear-gradient(180deg, #ffffff, #f8fbff);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 10px 20px rgba(40, 174, 138, 0.08);
+      margin-bottom: 20px;
+    }
+    .hidden { display: none; }
+    .form-row { margin-bottom: 12px; }
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+    .item { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
+    .item img { width: 100%; max-height: 180px; object-fit: cover; border-radius: 10px; margin-top: 8px; }
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+      <ul class="nav-links"></ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section id="loginPanel" class="panel" style="max-width:520px; margin:30px auto;">
+      <h1>تسجيل دخول الأدمن</h1>
+      <div class="form-row">
+        <label for="username">Username</label>
+        <input class="input" id="username" type="text" autocomplete="off">
+      </div>
+      <div class="form-row">
+        <label for="password">Password</label>
+        <input class="input" id="password" type="password" autocomplete="off">
+      </div>
+      <button id="loginBtn" class="btn" type="button">دخول</button>
+      <p id="loginStatus" class="muted"></p>
+    </section>
+
+    <section id="adminContent" class="hidden">
+      <div class="panel">
+        <h2>الحجوزات</h2>
+        <div id="bookingsList" class="section-grid"></div>
+      </div>
+
+      <div class="panel">
+        <h2>آراء المستخدمين </h2>
+        <div id="reviewsList" class="section-grid"></div>
+        
+      </div>
+
+      <div class="panel">
+        <h2>رسائل المستخدمين</h2>
+        <div id="messagesList" class="section-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0z1ocI7KpWoGChJwsouf1o9y6zrJk8UE",
+      authDomain: "athar-e0f22.firebaseapp.com",
+      projectId: "athar-e0f22",
+      storageBucket: "athar-e0f22.firebasestorage.app",
+      messagingSenderId: "1034869242246",
+      appId: "1:1034869242246:web:f8ab150ab42223706f9407",
+      measurementId: "G-7BYGV072KQ"
+    };
+
+    const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const loginPanel = document.getElementById('loginPanel');
+    const adminContent = document.getElementById('adminContent');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginStatus = document.getElementById('loginStatus');
+
+    const ADMIN_USER = 'athar';
+    const ADMIN_PASS = '129205';
+
+    function safeDate(value) {
+      if (!value) return '';
+      if (value.toDate) return value.toDate().toLocaleString('ar-EG');
+      return new Date(value).toLocaleString('ar-EG');
+    }
+
+    function itemHTML(lines, image) {
+      return `<div class="item">${lines.join('')} ${image ? `<img src="${image}" alt="img">` : ''}</div>`;
+    }
+
+    async function readCollection(name, container, mapFn) {
+      container.innerHTML = '<p class="muted">جار التحميل...</p>';
+      try {
+        const q = query(collection(db, name), orderBy('timestamp', 'desc'));
+        const snapshot = await getDocs(q);
+        if (snapshot.empty) {
+          container.innerHTML = '<p class="muted">لا توجد بيانات حالياً.</p>';
+          return;
+        }
+        container.innerHTML = '';
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          const el = document.createElement('div');
+          el.innerHTML = mapFn(data);
+          container.appendChild(el.firstChild);
+        });
+      } catch (error) {
+        container.innerHTML = '<p class="muted">تعذر تحميل البيانات.</p>';
+      }
+    }
+
+    async function loadAdminData() {
+      await readCollection('bookings', document.getElementById('bookingsList'), (b) => itemHTML([
+        `<h3>${b.name || '-'}</h3>`,
+        `<p><b>Phone:</b> ${b.phone || '-'}</p>`,
+        `<p><b>Email:</b> ${b.email || '-'}</p>`,
+        `<p class="muted">${safeDate(b.timestamp)}</p>`
+      ]));
+
+      await readCollection('reviews', document.getElementById('reviewsList'), (r) => itemHTML([
+        `<p>${r.rating || ''}</p>`,
+        `<h3>${r.name || '-'}</h3>`,
+        `<p>${r.text || '-'}</p>`,
+        `<p class="muted">${safeDate(r.timestamp)}</p>`
+      ], r.image));
+
+      await readCollection('messages', document.getElementById('messagesList'), (m) => itemHTML([
+        `<h3>${m.name || 'مستخدم'}</h3>`,
+        `<p>${m.message || m.text || '-'}</p>`,
+        `<p class="muted">${safeDate(m.timestamp)}</p>`
+      ]));
+    }
+
+    loginBtn.addEventListener('click', async () => {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (username === ADMIN_USER && password === ADMIN_PASS) {
+        loginStatus.textContent = 'تم تسجيل الدخول بنجاح.';
+        loginPanel.classList.add('hidden');
+        adminContent.classList.remove('hidden');
+        await loadAdminData();
+      } else {
+        loginStatus.textContent = 'بيانات الدخول غير صحيحة.';
+      }
+    });
+  </script>
+  <script src="script/script.js"></script>
+</body>
+</html>

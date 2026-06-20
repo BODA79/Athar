@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رايك يهمنا</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="nav"><div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+       <li><a data-page="index.html" href="index.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="about.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+      <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+      <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+      <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+       <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+       <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+    </ul>
+    </div>
+  </nav>
+    <style>
+        :root { --primary: #027021; --bg: #f8f9fa; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); padding: 20px; text-align: center; }
+        .container { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); max-width: 500px; margin: 0 auto 40px; }
+        .form-group { margin-bottom: 15px; text-align: right; }
+        input, textarea, select { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 16px; margin-top: 10px;}
+        #commentsSection { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .comment-card { background: white; padding: 15px; border-radius: 12px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-align: right; }
+        .comment-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-top: 10px; }
+        .comment-card h4 { margin: 10px 0 5px; color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>شاركينا رأيك ✨</h2>
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label>الاسم:</label>
+                <input type="text" id="userName" required>
+            </div>
+            <div class="form-group">
+                <label>رأيك:</label>
+                <textarea id="userText" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>التقييم:</label>
+                <select id="userRating">
+                    <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+                    <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                    <option value="⭐⭐⭐">⭐⭐⭐</option>
+                    <option value="⭐⭐">⭐⭐</option>
+                    <option value="⭐">⭐</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>صورة عملك:</label>
+                <input type="file" id="userImage" accept="image/*" required>
+            </div>
+            <button type="submit">نشر وتعليق</button>
+        </form>
+    </div>
+
+    <hr>
+    <h2>معرض آراء المستخدمين 📸</h2>
+    <div id="commentsSection"></div>
+<!-- رسالة التشجيع (تظهر في الأعلى) -->
+<div id="cheer-pop" style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#ffc107; color:#333; padding:15px 30px; border-radius:50px; z-index:10000; font-weight:bold; box-shadow:0 4px 15px rgba(0,0,0,0.2); font-family:sans-serif;"></div>
+
+<!-- أيقونة الكنز -->
+<span id="treasure-icon" onclick="collectTreasure()" style="position:absolute; font-size:45px; cursor:pointer; user-select:none; z-index:999;">💎</span>
+
+<script>
+window.addEventListener('load', function() {
+    let t = document.getElementById('treasure-icon');
+    // توزيع عشوائي في كامل مساحة الصفحة
+    let x = Math.random() * (window.innerWidth - 60);
+    let y = Math.random() * (document.body.scrollHeight - 60);
+    t.style.left = x + "px";
+    t.style.top = y + "px";
+    
+    // تغيير شكل الكنز عشوائياً لكل صفحة ليعطي تنوعاً
+    const icons = ["💎", "💰", "🏆", "🎁", "👑", "⭐"];
+    t.innerText = icons[Math.floor(Math.random() * icons.length)];
+});
+
+function collectTreasure() {
+    let name = localStorage.getItem('heroName') || "أيها البطل";
+    let count = parseInt(localStorage.getItem('foundCount') || "0");
+    let popup = document.getElementById('cheer-pop');
+    
+    count++; // زيادة العداد
+    localStorage.setItem('foundCount', count.toString());
+
+    // الرسائل مرتبة حسب عدد ما وجده المستخدم فعلياً
+    const steps = [
+        `بداية رائعة يا ${name}! هذا أول كنز تجده 💎 استمر!`,
+        `عاش يا ${name}! الكنز الثاني في جعبتك 💰 أنت سريع!`,
+        `أنت مذهل يا ${name}! وجدت الكنز الثالث 🏆 اقتربت!`,
+        `يا لك من قناص يا ${name}! الكنز الرابع 🎁 بقي واحد فقط!`,
+        `مبارك يا ${name}! 👑 وجدت الـ 5 كنوز وأتممت المهمة بنجاح!`
+    ];
+
+    popup.innerHTML = steps[count-1] || `مستمر في الإبداع يا ${name}!`;
+    popup.style.display = 'block';
+    document.getElementById('treasure-icon').style.display = 'none'; // إخفاء الكنز
+    
+    setTimeout(() => { popup.style.display = 'none'; }, 4000); // تختفي الرسالة بعد 4 ثواني
+}
+</script>
+
+<script type="module">
+    import { initializeApp, getApps, getApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyD0z1ocI7KpWoGChJwsouf1o9y6zrJk8UE",
+        authDomain: "athar-e0f22.firebaseapp.com",
+        projectId: "athar-e0f22",
+        storageBucket: "athar-e0f22.firebasestorage.app",
+        messagingSenderId: "1034869242246",
+        appId: "1:1034869242246:web:f8ab150ab42223706f9407",
+        measurementId: "G-7BYGV072KQ"
+    };
+
+    const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    const feedbackForm = document.getElementById('feedbackForm');
+    const commentsSection = document.getElementById('commentsSection');
+
+    async function loadComments() {
+        try {
+            const q = query(collection(db, 'reviews'), orderBy('timestamp', 'desc'));
+            const snap = await getDocs(q);
+            commentsSection.innerHTML = '';
+            snap.forEach((doc) => displayComment(doc.data()));
+        } catch (error) {
+            console.error('Load reviews error:', error);
+        }
+    }
+
+    loadComments();
+
+    feedbackForm.onsubmit = function(e) {
+        e.preventDefault();
+
+        const file = document.getElementById('userImage').files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            const newComment = {
+                name: document.getElementById('userName').value,
+                text: document.getElementById('userText').value,
+                rating: document.getElementById('userRating').value,
+                image: event.target.result,
+                timestamp: serverTimestamp(),
+                createdAt: new Date().toISOString()
+            };
+
+            addDoc(collection(db, 'reviews'), newComment)
+              .then(() => {
+                displayComment(newComment);
+                feedbackForm.reset();
+              })
+              .catch((error) => {
+                console.error('Save review error:', error);
+                alert('حدث خطأ أثناء حفظ الرأي');
+              });
+        };
+        reader.readAsDataURL(file);
+    };
+
+    function displayComment(data) {
+        const card = document.createElement('div');
+        card.className = 'comment-card';
+        card.innerHTML = `
+            <div style="color:#ffcc00">${data.rating}</div>
+            <h4>${data.name}</h4>
+            <p>${data.text}</p>
+            <img src="${data.image}">
+        `;
+        commentsSection.prepend(card);
+    }
+
+</script>
+<script src="script/script.js"></script>
+</body>
+</html>

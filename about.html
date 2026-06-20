@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التعريف</title>
+  <link rel="stylesheet" href="css/style.css">
+  
+
+
+</head>
+<body>
+  <nav class="nav"><div class="nav">
+        <div class="logo"></div>
+           <Img src="img/athar-go.jpg" style="height: 45 !important; width: auto !important; ;" alt="logo ">
+  </div>
+    <ul class="nav-links">
+      <li><a data-page="index.html" href="index.html">الرئيسية</a></li>
+      <li><a data-page="about.html" href="about.html">التعريف</a></li>
+      <li><a data-page="concepts.html" href="concepts.html">المفاهيم</a></li>
+      <li><a data-page="digital-transformation.html" href="digital-transformation.html">التحول الرقمي</a></li>
+      <li><a data-page="ad-analyzer.html" href="ad-analyzer.html">محلل الإعلان</a></li>
+      <li><a data-page="learning-games.html" href="learning-games.html">تعلم والعب</a></li>
+      <li><a data-page="services.html" href="services.html">الخدمات</a></li>
+      <li><a data-page="ha.html" href="ha.html">حالات فعليه</a></li>
+      <li><a data-page="rev.html" href="rev.html">اراء المستخدمين</a></li>
+      <li><a data-page="U1.html" href="U1.html">جرب اعلانك</a></li>
+      <li><a data-page="how us1.html" href="how us1.html">من نحن</a></li>
+      <li><a data-page="y2.html" href="y2.html">دراسه الحالات</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- صندوق الاسم -->
+<div id="start-box" style="text-align:center; padding:30px; background:#fff; border:2px solid #28a745; border-radius:15px; width:300px; margin:20px auto; font-family:sans-serif;">
+    <h3 style="color:#28a745;">رحلة الكنوز المخفية 🏴‍☠️</h3>
+    <input type="text" id="user-name-input" placeholder="اكتب اسمك هنا..." style="padding:10px; width:80%; border-radius:5px; border:1px solid #ddd;">
+    <button onclick="initGame()" style="margin-top:15px; padding:10px 20px; background:#28a745; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold;">ابدأ المغامرة</button>
+</div>
+
+<script>
+function initGame() {
+    let name = document.getElementById('user-name-input').value;
+    if(name.trim() === "") { alert("من فضلك اكتب اسمك أولاً!"); return; }
+    
+    // حفظ الاسم وتصفير عداد الكنوز في ذاكرة المتصفح
+    localStorage.setItem('heroName', name);
+    localStorage.setItem('foundCount', '0'); 
+    
+    // إخفاء الصندوق في نفس الصفحة
+    document.getElementById('start-box').style.display = 'none';
+}
+</script>
+  <main class="container">
+    <section class="hero">
+      <h1>تأثير تكنولوجيا المعلومات , الإعلان الهجومي علي العلامة التجارية</h1>
+      <p class="lead">استكشاف كيف تساهم التقنيات الرقمية في توجيه المنافسة الشرسة وتشكيل صورة الشركات في العصر الحديث.</p>
+      <a class="btn" href="ad-analyzer.html">ابدأ تحليل إعلانك</a>
+    </section>
+
+    <section style="margin-top:22px" class="grid grid-3">
+      <article class="card"><h3>تكنولوجيا المعلومات</h3><p>الأدوات والبيانات التي تقود الحملات.<br><br>المنصات الرقمية وتحليل البيانات التي تقود الحملات الإعلانية.</p></article>
+      <article class="card"><h3>الإعلان الهجومي</h3><p>استراتيجيات المقارنة المباشرة مع المنافسين وأثرها النفسي.</p></article>
+      <article class="card"><h3>العلامة التجارية</h3><p>تأثير الحملات التقنية على ولاء المستهلك.<br><br>قياس ولاء المستهلك وقيمة العلامة في ظل الضغط الإعلاني.</p></article>
+    </section>
+  </main>
+
+  <footer class="footer"></footer>
+  <button id="chatToggle" class="chat-toggle">💬</button>
+  <div id="chatWidget" class="chat-widget">
+    <div class="chat-head">مساعد</div>
+    <div id="chatBody" class="chat-body">
+      <div class="chat-msg bot">أهلا بك، أنا موجود لأي استفسار.</div>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" class="input" placeholder="اكتب رسالتك...">
+      <button id="chatSend" class="btn" style="margin-top:0">إرسال</button>
+    </div>
+  </div>
+  <script src="script/script.js"></script>
+  <footer style="text-align: center; padding: 30px; color: #045a0e;">
+        &copy; ٢٠٢٦ جميع الحقوق محفوظة لمشروع التخرج -قسم نظم معلومات
+    </footer>
+</body>
+</html>
+
+
+
+
